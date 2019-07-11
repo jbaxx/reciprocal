@@ -1,7 +1,8 @@
 " Function to toggle the candid (taffy) colorscheme
 function! ToggleCandid()
     if exists("g:colors_name")
-        if g:colors_name == "taffy"
+        "if g:colors_name == "taffy"
+        if g:colors_name == "candid"
             execute "colorscheme ".g:color_prev
             set termguicolors!
         else
