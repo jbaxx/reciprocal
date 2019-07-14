@@ -12,6 +12,7 @@ function! ToggleCandid()
                 set notermguicolors
             endif
         else
+            let g:original_termguicolor = &termguicolors
             let g:original_colorscheme = g:colors_name
             colorscheme candid
             set termguicolors
