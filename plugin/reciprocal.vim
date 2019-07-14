@@ -60,3 +60,35 @@ endfunction
 
 nnoremap <silent> <leader>m :call ToggleMaterialDarkThemes()<CR>
 
+
+" Function to toggle the OceanicNext color theme
+" Works with a fork from https://github.com/mhartington/oceanic-next
+" Sets the ctermfg and guifg foreground colors to a dark one 
+" Instead of " #ffffff pure white, recommended #343d46
+function! ToggleOceanic()
+    if exists("g:colors_name")
+        if g:colors_name == "OceanicNext"
+            execute "colorscheme ".g:original_colorscheme
+            if g:original_termguicolor == 1
+                set termguicolors
+            else
+                set notermguicolors
+            endif
+        else
+            let g:original_termguicolor = &termguicolors
+            let g:original_colorscheme = g:colors_name
+            set termguicolors
+            colorscheme OceanicNext
+            AirlineTheme oceanicnext
+        endif
+    else
+        let g:original_colorscheme = "default"
+        let g:original_termguicolor = &termguicolors
+        set termguicolors
+        colorscheme OceanicNext
+        AirlineTheme oceanicnext
+    endif
+endfunction
+
+nnoremap <silent> <leader>o :call ToggleOceanic()<CR>
+
